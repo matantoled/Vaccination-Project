@@ -40,9 +40,10 @@ function SummaryPage() {
             <h1>Vaccination Application</h1>
             <h2>Summary Page</h2><br></br>
             <div className="row">
-                <div className="col-md-4 mb-3">
+                <div className="col-md-4 mb-3 form-group">
                     <input
                         type="text"
+                        className="form-control"
                         placeholder="Search by city"
                         value={searchCity}
                         onChange={e => setSearchCity(e.target.value)}
