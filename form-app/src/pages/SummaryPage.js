@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import * as XLSX from 'xlsx';
 
 function SummaryPage() {
     const [citizens, setCitizens] = useState([]);
@@ -27,6 +28,12 @@ function SummaryPage() {
         setCitizens(result.data);
     };
 
+    const exportToExcel = () => {
+        const ws = XLSX.utils.json_to_sheet(citizens);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Citizens");
+        XLSX.writeFile(wb, "citizens.xlsx");
+    };
 
     return (
         <div className="container mt-3">
@@ -90,8 +97,8 @@ function SummaryPage() {
                 ))}
                 </tbody>
             </table>
+            <button className="btn btn-success" onClick={exportToExcel}>Export table to Excel</button>
         </div>
-
     );
 }
 
