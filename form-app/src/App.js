@@ -2,31 +2,24 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import RegistrationPage from './pages/RegistrationPage';
 import SummaryPage from './pages/SummaryPage';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import './App.css';
 
 
 
 function App() {
     return (
+        <div className="app-background" style={{
+            backgroundImage: `url(${process.env.PUBLIC_URL + '/back.jpg'})`
+        }}>
         <Router>
-            <div>
-                <h1>Vaccination Application</h1>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/">Registration Page</Link>
-                        </li>
-                        <li>
-                            <Link to="/summary">Summary Page</Link>
-                        </li>
-                    </ul>
-                </nav>
                 <Routes>
                     <Route path="/" element={<RegistrationPage />} />
                     <Route path="/summary" element={<SummaryPage />} />
                 </Routes>
-            </div>
         </Router>
+        </div>
     );
 }
 

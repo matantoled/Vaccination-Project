@@ -49,10 +49,13 @@ function RegistrationPage() {
     };
 
     return (
-        <div>
+        <div className="container mt-3">
+            <h1>Vaccination Application</h1>
             <h2>Registration Page</h2>
             <form onSubmit={handleSubmit}>
-                <div className="form-group">
+                <div className="row">
+
+                <div className="col-md-6 form-group">
                     <label>First Name</label>
                     <input
                         type="text"
@@ -62,7 +65,7 @@ function RegistrationPage() {
                         required
                     />
                 </div>
-                <div className="form-group">
+                <div className="col-md-6 form-group">
                     <label>Last Name</label>
                     <input
                         type="text"
@@ -72,8 +75,10 @@ function RegistrationPage() {
                         required
                     />
                 </div>
-                <div className="form-group">
-                    <label>Date of Birth</label>
+                </div>
+                <div className="row form-group my-3">
+                    <div className="col-md-12">
+                    <label>Date of Birth</label><br></br>
                     <DatePicker // Implement the DatePicker here
                         selected={dateOfBirth}
                         onChange={(date) => setDateOfBirth(date)}
@@ -81,7 +86,8 @@ function RegistrationPage() {
                         required
                     />
                 </div>
-                <div className="form-group">
+                </div>
+                <div className="form-group my-3">
                     <label>Address</label>
                     <input
                         type="text"
@@ -91,8 +97,8 @@ function RegistrationPage() {
                         required
                     />
                 </div>
-                <div className="form-group">
-                    <label>City</label>
+                <div className="form-group my-3">
+                    <label>City</label><br></br>
                     <select
                         id="city"
                         name="city"
@@ -108,7 +114,8 @@ function RegistrationPage() {
                         <option value="Other">Other</option>
                     </select>
                 </div>
-                <div className="form-group">
+                <div className="row">
+                <div className="col-md-6 form-group my-3">
                     <label>Zip Code</label>
                     <input
                         type="text"
@@ -117,7 +124,7 @@ function RegistrationPage() {
                         onChange={(e) => setZipCode(e.target.value)}
                     />
                 </div>
-                <div className="form-group">
+                <div className="col-md-6 form-group my-3">
                     <label>Land Line</label>
                     <input
                         type="text"
@@ -127,7 +134,8 @@ function RegistrationPage() {
                         required
                     />
                 </div>
-                <div className="form-group">
+                </div>
+                <div className="form-group my-3">
                     <label>Cellular Phone</label>
                     <input
                         type="text"
@@ -137,8 +145,8 @@ function RegistrationPage() {
                         required
                     />
                 </div>
-                <div className="mb-3 form-check">
-                    <label htmlFor="hasCovid" className="form-check-label">COVID-19 History</label>
+                <div className="form-group my-3">
+                    <label className="form-check-label" htmlFor="check1">COVID-19 History&nbsp;&nbsp;&nbsp;</label>
                     <input
                         type="checkbox"
                         id="hasCovid"
@@ -146,9 +154,10 @@ function RegistrationPage() {
                         checked={hasCovid}
                         onChange={(e) => setHasCovid(e.target.checked)}
                     />
-                </div><br></br>
+                </div>
+
                 <div className="form-group">
-                    <label>Previous Health Conditions</label>
+                    <label className="fw-bold">Previous Health Conditions</label>
                     <div className="form-check">
                         <input
                             type="checkbox"
@@ -216,10 +225,12 @@ function RegistrationPage() {
                                 })
                             }
                         />
-                    </div>
+                    </div><br></br>
                 </div>
+                <div className="d-flex justify-content-center">
                 <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+                </div>
+            </form><br></br>
         </div>
     );
 }
