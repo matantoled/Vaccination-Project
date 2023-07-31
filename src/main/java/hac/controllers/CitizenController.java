@@ -6,6 +6,7 @@ import hac.service.CitizenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -26,8 +27,8 @@ public class CitizenController {
 
     @GetMapping("/citizens")
     public List<Citizen> getAllCitizens(@RequestParam(required = false) String city,
-                                        @RequestParam(required = false) Date fromDate,
-                                        @RequestParam(required = false) Date toDate) {
+                                        @RequestParam(required = false) LocalDateTime fromDate,
+                                        @RequestParam(required = false) LocalDateTime toDate) {
         return citizenService.searchCitizens(city, fromDate, toDate);
     }
 

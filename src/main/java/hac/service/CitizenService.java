@@ -5,6 +5,8 @@ import hac.repository.CitizenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class CitizenService {
         return citizenRepository.save(citizen);
     }
 
-    public List<Citizen> searchCitizens(String city, Date fromDate, Date toDate) {
+    public List<Citizen> searchCitizens(String city, LocalDateTime fromDate, LocalDateTime toDate) {
         if (city != null && fromDate != null && toDate != null) {
             return citizenRepository.findByDateOfBirthBetweenAndCity(fromDate, toDate, city);
         } else if (city != null) {

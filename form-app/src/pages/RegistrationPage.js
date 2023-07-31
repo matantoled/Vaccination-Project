@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import {useNavigate} from "react-router-dom";
 
 function RegistrationPage() {
     const [firstName, setFirstName] = useState('');
@@ -13,6 +14,7 @@ function RegistrationPage() {
     const [landLine, setLandLine] = useState('');
     const [cellularPhone, setCellularPhone] = useState('');
     const [hasCovid, setHasCovid] = useState(false);
+    const navigate = useNavigate();
 
     const [healthConditions, setHealthConditions] = useState({
         diabetes: false,
@@ -41,6 +43,7 @@ function RegistrationPage() {
             .then((response) => {
                 // Handle success
                 console.log('Citizen data saved:', response.data);
+                navigate('/summary');
             })
             .catch((error) => {
                 // Handle error

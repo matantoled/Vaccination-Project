@@ -3,6 +3,7 @@ package hac.model;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -12,7 +13,7 @@ public class Citizen implements Serializable {
     private long id;
     private String firstName;
     private String lastName;
-    private Date dateOfBirth;
+    private LocalDateTime dateOfBirth;
     private String address;
     private String city;
     private String zipCode;
@@ -25,7 +26,7 @@ public class Citizen implements Serializable {
     public Citizen() {
     }
 
-    public Citizen(String firstName, String lastName, Date dateOfBirth, String address, String city,
+    public Citizen(String firstName, String lastName, LocalDateTime dateOfBirth, String address, String city,
                    String zipCode, String landline, String cellPhone, boolean hasCovid) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -54,7 +55,7 @@ public class Citizen implements Serializable {
         return lastName;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDateTime getDateOfBirth() {
         return dateOfBirth;
     }
 
@@ -99,7 +100,7 @@ public class Citizen implements Serializable {
         this.lastName= lastName;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDateTime dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

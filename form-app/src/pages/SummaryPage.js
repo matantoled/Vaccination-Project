@@ -1,27 +1,65 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import ReactDataExport from 'react-data-export';
 
 function SummaryPage() {
     const [citizens, setCitizens] = useState([]);
+    const [searchCity, setSearchCity] = useState("");
+    const [searchFromDate, setSearchFromDate] = useState("");
+    const [searchToDate, setSearchToDate] = useState("");
 
     useEffect(() => {
         fetchCitizens();
-    }, []);
+    }, [searchCity, searchFromDate, searchToDate]);
 
-    const fetchCitizens = () => {
-        axios.get('/citizens')
-            .then((response) => {
-                setCitizens(response.data);
-            })
-            .catch((error) => {
-                console.error('Error fetching citizens:', error);
-            });
+    const fetchCitizens = async () => {
+        let url = "/citizens?";
+        if (searchCity) url += `city=${searchCity}&`;
+        if (searchFromDate) {
+            let fromDate = new Date(searchFromDate);
+            url += `fromDate=${fromDate.toISOString()}&`;
+        }
+        if (searchToDate) {
+            let toDate = new Date(searchToDate);
+            url += `toDate=${toDate.toISOString()}`;
+        }
+
+        const result = await axios.get(url);
+        setCitizens(result.data);
     };
 
+
     return (
-        <div>
-            <h2>Summary Page</h2>
+        <div className="container">
+            <h1>Vaccination Application</h1>
+            <h2>Summary Page</h2><br></br>
+            <div className="row">
+                <div className="col-md-4 mb-3">
+                    <input
+                        type="text"
+                        placeholder="Search by city"
+                        value={searchCity}
+                        onChange={e => setSearchCity(e.target.value)}
+                    />
+                </div>
+                <div className="col-md-4 mb-3">
+                    <label>From date&nbsp;</label>
+                    <input
+                        type="date"
+                        placeholder="Search from date"
+                        value={searchFromDate}
+                        onChange={e => setSearchFromDate(e.target.value)}
+                    />
+                </div>
+                <div className="col-md-4 mb-3">
+                    <label>To date&nbsp;</label>
+                    <input
+                        type="date"
+                        placeholder="Search to date"
+                        value={searchToDate}
+                        onChange={e => setSearchToDate(e.target.value)}
+                    />
+                </div>
+            </div>
             <table className="table table-striped">
                 <thead>
                 <tr>
@@ -34,7 +72,6 @@ function SummaryPage() {
                     <th>Land Line</th>
                     <th>Cellular Phone</th>
                     <th>Has COVID-19</th>
-                    <th>Health Conditions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,7 +80,7 @@ function SummaryPage() {
                         {/* Render citizen data in table rows */}
                         <td>{citizen.firstName}</td>
                         <td>{citizen.lastName}</td>
-                        <td>{citizen.dateOfBirth}</td>
+                        <td>{new Date(citizen.dateOfBirth).toISOString().split("T")[0]}</td>
                         <td>{citizen.address}</td>
                         <td>{citizen.city}</td>
                         <td>{citizen.zipCode}</td>
@@ -54,14 +91,8 @@ function SummaryPage() {
                 ))}
                 </tbody>
             </table>
-
-            {/* Button to export data to Excel */}
-            {/*<ReactDataExport.ExcelFile element={<button className="btn btn-secondary">Export to Excel</button>}>*/}
-            {/*    <ReactDataExport.ExcelSheet data={citizens} name="Citizens">*/}
-            {/*        /!* Define Excel columns here *!/*/}
-            {/*    </ReactDataExport.ExcelSheet>*/}
-            {/*</ReactDataExport.ExcelFile>*/}
         </div>
+
     );
 }
 
