@@ -54,7 +54,7 @@ function RegistrationPage() {
     return (
         <div className="container mt-3">
             <h1>Vaccination Application</h1>
-            <h2>Registration Page</h2>
+            <h2>Registration Page</h2><br></br>
             <form onSubmit={handleSubmit}>
                 <div className="row">
 
@@ -148,8 +148,8 @@ function RegistrationPage() {
                         required
                     />
                 </div>
-                <div className="form-group my-3">
-                    <label className="form-check-label" htmlFor="check1">COVID-19 History&nbsp;&nbsp;&nbsp;</label>
+                <div className="form-group my-3 mt-4">
+                    <label className="form-check-label fw-bold" htmlFor="check1">Have you had COVID-19 in the past?&nbsp;&nbsp;&nbsp;</label>
                     <input
                         type="checkbox"
                         id="hasCovid"
@@ -215,11 +215,12 @@ function RegistrationPage() {
                             Allergies
                         </label>
                     </div>
-                    <div className="form-group">
+                    <div className="row">
+                    <div className="col-md-6 form-group">
                         <label>Other</label>
-                        <input
-                            type="text"
+                        <textarea
                             className="form-control"
+                            rows="2"
                             value={healthConditions.other}
                             onChange={(e) =>
                                 setHealthConditions({
@@ -228,6 +229,7 @@ function RegistrationPage() {
                                 })
                             }
                         />
+                    </div>
                     </div><br></br>
                 </div>
                 <div className="d-flex justify-content-center">

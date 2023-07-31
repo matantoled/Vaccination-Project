@@ -29,7 +29,7 @@ function SummaryPage() {
 
 
     return (
-        <div className="container">
+        <div className="container mt-3">
             <h1>Vaccination Application</h1>
             <h2>Summary Page</h2><br></br>
             <div className="row">
