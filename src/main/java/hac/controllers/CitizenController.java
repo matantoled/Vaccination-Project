@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -21,7 +20,6 @@ public class CitizenController {
 
     @PostMapping("/citizens")
     public Citizen newCitizen(@RequestBody Citizen newCitizen) {
-        System.out.println("newCitizen: ");
         return citizenService.saveCitizen(newCitizen);
     }
 
@@ -31,10 +29,5 @@ public class CitizenController {
                                         @RequestParam(required = false) LocalDateTime toDate) {
         return citizenService.searchCitizens(city, fromDate, toDate);
     }
-
-//    @GetMapping("/citizens/{id}")
-//    public Citizen getCitizen(@PathVariable Integer id) {
-//        return citizenService.getCitizenById(id);
-//    }
 }
 

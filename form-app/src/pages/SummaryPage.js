@@ -77,7 +77,6 @@ function SummaryPage() {
                 <tbody>
                 {citizens.map((citizen) => (
                     <tr key={citizen.id}>
-                        {/* Render citizen data in table rows */}
                         <td>{citizen.firstName}</td>
                         <td>{citizen.lastName}</td>
                         <td>{new Date(citizen.dateOfBirth).toISOString().split("T")[0]}</td>
