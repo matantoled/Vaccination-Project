@@ -1,9 +1,5 @@
 // Importing required libraries
-import { Link, useLocation, Outlet, useNavigate } from 'react-router-dom';
-import { useEffect } from "react";
-import axios from "axios";
-import RegistrationPage from "./RegistrationPage";
-import SummaryPage from "./SummaryPage";
+import { Link, useLocation, Outlet } from 'react-router-dom';
 
 
 // MenuBar component
@@ -11,7 +7,6 @@ function MenuBar() {
 
     // Using react-router hooks for navigation and location
     const location = useLocation();
-    const navigate = useNavigate();
 
     // Returning navigation bar JSX
     return (

@@ -19,7 +19,6 @@ public class Citizen implements Serializable {
     private String landLine;
     private String cellularPhone;
     private Boolean hasCovid;
-    // private String healthConditions; ******************************************
 
     // Constructors
     public Citizen() {
@@ -36,7 +35,6 @@ public class Citizen implements Serializable {
         this.landLine = landline;
         this.cellularPhone = cellPhone;
         this.hasCovid = hasCovid;
-       // this.healthConditions = healthConditions;
     }
 
     // getters and setters...
@@ -82,9 +80,6 @@ public class Citizen implements Serializable {
         return hasCovid;
     }
 
-//    public String getHealthConditions() {
-//        return healthConditions;
-//    }
 
     // Setters
     public void setId(Long id) {
@@ -127,9 +122,6 @@ public class Citizen implements Serializable {
         this.hasCovid = hasCovid;
     }
 
-//    public void setHealthConditions(String healthConditions) {
-//        this.healthConditions = healthConditions;
-//    }
 
     // toString
     @Override

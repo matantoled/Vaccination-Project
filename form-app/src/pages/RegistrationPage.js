@@ -36,7 +36,6 @@ function RegistrationPage() {
             landLine,
             cellularPhone,
             hasCovid,
-            //healthConditions,
         };
 
         axios.post('/citizens', newCitizen)
